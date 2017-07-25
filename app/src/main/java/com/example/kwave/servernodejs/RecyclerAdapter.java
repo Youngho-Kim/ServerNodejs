@@ -17,8 +17,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
     LayoutInflater inflater;
     List<Bbs> data;
 
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
     public RecyclerAdapter(Context context, List<Bbs> data) {
         this.inflater = LayoutInflater.from(context);
+        this.data = data;
     }
 
     @Override
@@ -32,11 +38,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
         Bbs bbs = data.get(position);
         holder.setTitle(bbs.title);
         holder.setDate(bbs.date);
-    }
-
-    @Override
-    public int getItemCount() {
-        return data.size();
     }
 
     class Holder extends RecyclerView.ViewHolder{
